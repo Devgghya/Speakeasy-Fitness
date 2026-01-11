@@ -1,0 +1,179 @@
+<div class="min-h-screen flex flex-col relative overflow-hidden">
+
+  <!-- Header -->
+  <header class="fixed w-full z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-[#D4AF37]/30">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-2xl font-serif tracking-widest text-gold cursor-pointer" (click)="scrollTo('hero')">
+        SPEAKEASY
+      </div>
+      
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex gap-8 text-sm tracking-widest uppercase">
+        <button (click)="scrollTo('experience')" class="hover:text-gold transition-colors">The Experience</button>
+        <button (click)="scrollTo('amenities')" class="hover:text-gold transition-colors">Amenities</button>
+        <button (click)="openVault()" class="text-gold border border-[#D4AF37] px-4 py-1 hover:bg-[#D4AF37] hover:text-black transition-all">Join</button>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-gold" (click)="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  @if (isMenuOpen()) {
+    <div class="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center space-y-8 md:hidden">
+      <button class="absolute top-6 right-6 text-gold" (click)="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <button (click)="scrollTo('experience')" class="text-2xl font-serif text-gold">The Experience</button>
+      <button (click)="scrollTo('amenities')" class="text-2xl font-serif text-gold">Amenities</button>
+      <button (click)="openVault()" class="text-2xl font-serif text-gold border border-[#D4AF37] px-8 py-2">Join</button>
+    </div>
+  }
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative h-screen flex items-center justify-center">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img ngSrc="https://images.unsplash.com/photo-1534438327276-14e5300c3a48" fill priority alt="Dark Gym Background" class="object-cover opacity-30">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a]"></div>
+      <div class="absolute inset-0 bg-[#0a0a0a]/50"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div class="mb-4 inline-block border-t border-b border-[#D4AF37] py-2 px-6">
+        <span class="text-sm uppercase tracking-[0.3em] text-gray-300">Est. 1920</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-6 leading-tight">
+        FITNESS IS <br />
+        <span class="text-gold italic">OUR SECRET.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 mb-10 font-light tracking-wide max-w-2xl mx-auto">
+        Los Angeles’ Premier Underground Training Facility. <br class="hidden md:block"/>
+        Where opacity meets performance.
+      </p>
+      <button (click)="openVault()" class="btn-gold bg-transparent px-10 py-4 text-lg md:text-xl font-serif">
+        Enter The Vault
+      </button>
+    </div>
+  </section>
+
+  <!-- The Experience Section -->
+  <section id="experience" class="py-24 px-6 bg-[#0a0a0a] relative">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-20">
+        <h2 class="text-4xl md:text-5xl font-serif text-gold mb-4">The Experience</h2>
+        <div class="w-24 h-1 bg-[#D4AF37] mx-auto"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <!-- Card 1 -->
+        <div class="group cursor-pointer">
+          <div class="art-deco-border h-full p-8 transition-transform transform group-hover:-translate-y-2 bg-[#111]">
+            <div class="h-48 mb-6 overflow-hidden relative border border-[#D4AF37]/30">
+               <img ngSrc="https://images.unsplash.com/photo-1517963879466-e825c15f99a5" fill alt="Weights" class="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+            <h3 class="text-2xl font-serif text-white mb-3 text-center">The Main Floor</h3>
+            <p class="text-gray-400 text-sm leading-relaxed text-center font-light">
+              Heavy iron, calibrated plates, and vintage aesthetics. A sanctuary for those who respect the old ways of strength.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="group cursor-pointer">
+          <div class="art-deco-border h-full p-8 transition-transform transform group-hover:-translate-y-2 bg-[#111]">
+            <div class="h-48 mb-6 overflow-hidden relative border border-[#D4AF37]/30">
+               <img ngSrc="https://images.unsplash.com/photo-1571902943202-507ec2618e8f" fill alt="Studio" class="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+            <h3 class="text-2xl font-serif text-white mb-3 text-center">The Studio</h3>
+            <p class="text-gray-400 text-sm leading-relaxed text-center font-light">
+              Private sessions in soundproofed chambers. Boxing, HIIT, and movement flows under dramatic lighting.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="group cursor-pointer">
+          <div class="art-deco-border h-full p-8 transition-transform transform group-hover:-translate-y-2 bg-[#111]">
+            <div class="h-48 mb-6 overflow-hidden relative border border-[#D4AF37]/30">
+               <img ngSrc="https://images.unsplash.com/photo-1544161515-4ab6ce6db874" fill alt="Sauna" class="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+            <h3 class="text-2xl font-serif text-white mb-3 text-center">The Recovery</h3>
+            <p class="text-gray-400 text-sm leading-relaxed text-center font-light">
+              Infrared saunas, cold plunges, and steam rooms. Recover in silence and luxury.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote / Interstitial -->
+  <section class="py-20 bg-[#0f0f0f] border-t border-b border-[#D4AF37]/20">
+    <div class="container mx-auto px-6 text-center">
+      <p class="text-2xl md:text-4xl font-serif italic text-[#D4AF37]/80 leading-relaxed max-w-4xl mx-auto">
+        "In a city of noise, silence is the ultimate luxury. Train where no one can find you."
+      </p>
+    </div>
+  </section>
+
+  <!-- Membership Inquiry (Modal Logic) -->
+  @if (showModal()) {
+    <div class="fixed inset-0 z-[60] flex items-center justify-center p-4">
+      <div class="absolute inset-0 bg-black/90 backdrop-blur-md" (click)="closeVault()"></div>
+      
+      <div class="relative bg-[#111] border border-[#D4AF37] p-8 md:p-12 max-w-lg w-full shadow-[0_0_50px_rgba(212,175,55,0.2)]">
+        <button (click)="closeVault()" class="absolute top-4 right-4 text-[#D4AF37] hover:text-white">
+           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div class="text-center mb-8">
+          <h3 class="text-3xl font-serif text-gold mb-2">Access Request</h3>
+          <p class="text-gray-400 text-sm uppercase tracking-widest">Membership is by referral only</p>
+        </div>
+
+        <form class="space-y-6" (submit)="$event.preventDefault(); closeVault()">
+          <div>
+            <label class="block text-[#D4AF37] text-xs uppercase tracking-widest mb-2">Name</label>
+            <input type="text" class="w-full bg-[#0a0a0a] border border-[#D4AF37]/50 text-white px-4 py-3 focus:outline-none focus:border-[#D4AF37] font-serif" placeholder="Enter your full name">
+          </div>
+          <div>
+            <label class="block text-[#D4AF37] text-xs uppercase tracking-widest mb-2">Code</label>
+            <input type="text" class="w-full bg-[#0a0a0a] border border-[#D4AF37]/50 text-white px-4 py-3 focus:outline-none focus:border-[#D4AF37] font-serif" placeholder="Referral Code">
+          </div>
+          <button type="submit" class="w-full bg-[#D4AF37] text-black font-bold uppercase tracking-widest py-4 hover:bg-white transition-colors">
+            Submit Application
+          </button>
+        </form>
+      </div>
+    </div>
+  }
+
+  <!-- Footer -->
+  <footer class="bg-[#050505] py-12 border-t border-[#D4AF37]">
+    <div class="container mx-auto px-6 text-center">
+      <div class="text-gold text-2xl font-serif tracking-widest mb-6">SPEAKEASY</div>
+      <div class="flex justify-center space-x-6 mb-8 text-sm text-gray-500 uppercase tracking-widest">
+        <a href="#" class="hover:text-gold transition-colors">Instagram</a>
+        <span class="text-[#D4AF37]">•</span>
+        <a href="#" class="hover:text-gold transition-colors">Location Hidden</a>
+        <span class="text-[#D4AF37]">•</span>
+        <a href="#" class="hover:text-gold transition-colors">Contact</a>
+      </div>
+      <p class="text-xs text-gray-600 font-serif">
+        &copy; 1920-2024 Speakeasy Fitness Los Angeles. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+</div>
